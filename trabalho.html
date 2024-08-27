@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portifólio Pessoal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre Mim</a></li>
+                <li><a href="formacao.html">Formação</a></li>
+                <li><a href="portifolio.html">Portfólio</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Seção de Início -->
+        <section id="inicio">
+            <h1>Bem-vindo ao meu site!</h1>
+            <p>Esta é a página inicial.</p>
+        </section>
+
+        <!-- Seção Sobre Mim -->
+        <section id="sobre" style="display:none;">
+            <h1>Sobre Mim</h1>
+            <br>
+            <p>Olá, sou Marcos de Oliveira, tenho 27 anos, sou natural de Esperança-PB, mas vivi a minha infância e adolescência em Guarujá-SP</p>
+            <p>Hoje moro em São José dos Pinhais-PR desde 2022. </p>
+            <p>Meu hobbie preferido é jogar jogos de video-game e computador. </p>
+            <p>Gosto de Futebol e sou torcedor do Santos F.C. </p>
+        </section>
+
+        <!-- Seção Formação -->
+        <section id="formacao" style="display:none;">
+            <h1>Minha formação</h1>
+            <br>
+            <p>Tenho o ensino médio completo e estou cursando ADS (Análise e desenvolvimento de sistemas) no CENTRO UNIVERSITÁRIO INTERNACIONAL - UNINTER.</p>
+        </section>
+
+        <!-- Seção Portfólio -->
+        <section id="portifolio" style="display:none;">
+            <h1>Portfólio</h1>
+            <br>
+            <p>Aqui estão alguns dos meus trabalhos realizados durante as aulas de Fundamentos da Programação Web:</p>
+            <br>
+            <ul>
+                <li><a href="[link do trabalho 1]">Trabalho 1</a></li>
+                <li><a href="[link do trabalho 2]">Trabalho 2</a></li>
+            </ul>
+        </section>
+
+        <!-- Seção Contato -->
+        <section id="contato" style="display:none;">
+            <h1>Contato</h1>
+            <form id="contactForm">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Meu Site</p>
+    </footer>
+
+    <script>
+        // Esta é a função para mostrar uma seção específica e ocultar outras
+        function showSection(sectionId) {
+            // Ocultando todas as seções
+            document.querySelectorAll('main > section').forEach(section => {
+                section.style.display = 'none';
+            });
+            // Mostrando a seção selecionada
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        // Mostrando a seção inicial por padrão
+        showSection('inicio');
+
+        // Adicionando event listeners aos links do menu
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault(); // Evita o comportamento padrão do link
+                const sectionId = event.target.getAttribute('href').replace('.html', '');
+                showSection(sectionId);
+            });
+        });
+
+        // Adicionando validação básica ao formulário de contato
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitando o envio real do formulário para demonstração
+
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let message = document.getElementById('message').value;
+
+            if(name && email && message) {
+                alert('Formulário enviado com sucesso!');
+                // Aqui você pode adicionar lógica para enviar os dados do formulário para um servidor
+            } else {
+                alert('Por favor, preencha todos os campos.');
+            }
+        });
+    </script>
+</body>
+</html>
